@@ -1,0 +1,188 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  font-family: var(--font-main);
+}
+
+/* 로고 */
+.header-logo {
+  font-family: var(--font-logo);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  flex-shrink: 0;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-logo::before {
+  content: '';
+  display: block;
+  width: 13px;
+  height: 13px;
+  background: var(--color-primary);
+  transform: rotate(45deg);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* 네비 — 절대 중앙 정렬 */
+.header-nav {
+  display: flex;
+  gap: 2px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-link {
+  font-size: 18px;
+  color: var(--color-text-mid);
+  text-decoration: none;
+  padding: 7px 20px;
+  border-radius: var(--radius-xs);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-link:hover  { background: var(--color-primary-light); color: var(--color-primary); }
+.nav-link.active { color: var(--color-text); font-weight: 500; }
+
+/* 인증 영역 */
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-login {
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-mid);
+  padding: 6px 16px;
+  border-radius: var(--radius-xs);
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.btn-login:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: white;
+}
+
+/* 아바타 */
+.avatar-wrap { position: relative; }
+
+.avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  padding: 5px 12px 5px 5px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.avatar-btn:hover { border-color: var(--color-primary-mid); }
+
+.avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.avatar-circle.user    { background: var(--color-border); color: var(--color-text-mid); }
+.avatar-circle.creator { background: var(--color-primary-mid); color: #8E5A63; }
+.avatar-circle.admin   { background: #D4E8D4; color: #3A6B3A; }
+
+.avatar-name  { font-size: 13px; color: var(--color-text); font-weight: 500; }
+.avatar-caret { font-size: 10px; color: var(--color-text-light); }
+
+.avatar-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  min-width: 180px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  z-index: 300;
+}
+
+.dropdown-role {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+}
+
+.role-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.role-badge.user    { background: var(--color-border-light); color: var(--color-text-mid); }
+.role-badge.creator { background: var(--color-primary-light); color: var(--color-primary); }
+.role-badge.admin   { background: #EDF5ED; color: #3A6B3A; }
+
+.dropdown-id { font-size: 11.5px; color: var(--color-text-light); }
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--color-border-light);
+  margin: 3px 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--color-text);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.13s;
+}
+
+.dropdown-item:hover  { background: var(--color-surface-alt); }
+.dropdown-item.danger { color: #c0392b; }
+
+.di-icon {
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}

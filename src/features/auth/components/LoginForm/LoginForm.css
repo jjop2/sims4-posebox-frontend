@@ -1,0 +1,193 @@
+/* 페이지 배경 래퍼 */
+.lf-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-auth);
+  padding: 40px 24px;
+  font-family: var(--font-main);
+}
+
+/* 카드 */
+.lf {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* 폼 */
+.lf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.lf-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.lf-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lf-forgot-link {
+  background: transparent;
+  border: none;
+  color: var(--color-text-light);
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.14s;
+}
+
+.lf-forgot-link:hover { color: var(--color-primary); }
+
+.lf-input-wrap {
+  position: relative;
+}
+
+.lf-input {
+  width: 100%;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+  outline: none;
+  transition: border-color 0.16s;
+  box-sizing: border-box;
+}
+
+.lf-input-wrap .lf-input { padding-right: 44px; }
+.lf-input:focus           { border-color: var(--color-primary); }
+.lf-input.invalid         { border-color: #e74c3c; }
+.lf-input::placeholder    { color: var(--color-text-light); }
+
+.lf-eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.5;
+  transition: opacity 0.14s;
+}
+
+.lf-eye-btn:hover { opacity: 0.9; }
+
+.lf-error {
+  font-size: 12px;
+  color: #c0392b;
+  margin: 0;
+  padding-left: 2px;
+}
+
+.lf-submit-btn {
+  width: 100%;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border: none;
+  padding: 13px 0;
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.16s;
+  margin-top: 4px;
+}
+
+.lf-submit-btn:hover { background: var(--color-primary-hover); }
+
+.lf-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.lf-divider::before,
+.lf-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.lf-divider-text {
+  font-size: 12px;
+  color: var(--color-text-light);
+  white-space: nowrap;
+}
+
+.lf-google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 0;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.16s, background 0.16s;
+}
+
+.lf-google-btn:hover {
+  border-color: var(--color-primary-mid);
+  background: var(--color-surface-alt);
+}
+
+.lf-google-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.lf-footer-text {
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-light);
+  margin: 20px 0 0;
+}
+
+.lf-text-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.14s;
+}
+
+.lf-text-btn:hover { color: var(--color-primary-hover); }

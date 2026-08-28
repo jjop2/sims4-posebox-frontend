@@ -1,0 +1,92 @@
+.pc {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: transform 0.22s ease, border-color 0.22s, box-shadow 0.22s;
+  font-family: var(--font-main);
+}
+
+.pc--hovered {
+  transform: translateY(-3px);
+  border-color: var(--color-primary-mid);
+  box-shadow: 0 8px 22px rgba(185, 122, 132, 0.11);
+}
+
+/* ── 썸네일 ── */
+.pc-thumb {
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* 즐겨찾기 — 우측 하단 */
+.pc-fav {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.18s, transform 0.18s, background 0.15s;
+}
+
+.pc-fav.visible { opacity: 1; }
+.pc-fav:hover   { transform: scale(1.15); background: white; }
+
+/* ── 본문 ── */
+.pc-body { padding: 10px 12px 13px; }
+
+.pc-title {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-text);
+}
+
+.pc-creator {
+  font-size: 11px;
+  color: var(--color-text-light);
+  margin: 0 0 8px;
+}
+
+.pc-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 7px;
+}
+
+.pc-badge {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-mid);
+  padding: 1px 6px;
+  border-radius: 20px;
+  font-size: 10px;
+}
+
+.pc-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+
+.pc-tag {
+  font-size: 10px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  padding: 1px 7px;
+  border-radius: 20px;
+}

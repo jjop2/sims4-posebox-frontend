@@ -1,0 +1,42 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stepper-btn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-mid);
+  font-weight: 300;
+  line-height: 1;
+  user-select: none;
+  transition: border-color 0.14s, color 0.14s, background 0.14s;
+}
+
+.stepper-btn:hover {
+  border-color: var(--color-search-muted);
+  color: var(--color-search-muted);
+  background: var(--color-search-pat);
+}
+
+.stepper-val {
+  font-size: 15px;
+  font-weight: 500;
+  min-width: 14px;
+  text-align: center;
+  color: var(--color-text);
+  transition: color 0.14s;
+}
+
+.stepper-val.active {
+  color: var(--color-search-muted);
+}

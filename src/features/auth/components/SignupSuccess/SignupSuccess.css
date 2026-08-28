@@ -1,0 +1,78 @@
+/* 모달 안에서 렌더링되므로 페이지 래퍼 없음 */
+.ss {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px 0 4px;
+  font-family: var(--font-main);
+}
+
+.ss-icon {
+  font-size: 44px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.ss-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.ss-desc {
+  font-size: 14px;
+  color: var(--color-text-mid);
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+
+.ss-login-btn {
+  width: 100%;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border: none;
+  padding: 13px 0;
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.16s;
+  margin-bottom: 22px;
+}
+
+.ss-login-btn:hover { background: var(--color-primary-hover); }
+
+.ss-creator-wrap {
+  width: 100%;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.ss-creator-label {
+  font-size: 12.5px;
+  color: var(--color-text-light);
+  margin: 0 0 8px;
+}
+
+.ss-creator-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.14s;
+}
+
+.ss-creator-btn:hover { color: var(--color-primary-hover); }

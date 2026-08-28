@@ -1,0 +1,60 @@
+.hero {
+  background-color: var(--color-search-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 8 L38 22 L30 36 L22 22 Z' fill='none' stroke='%23C5D4C1' stroke-width='1.2'/%3E%3Ccircle cx='30' cy='8' r='2' fill='%23C5D4C1'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+  padding: 56px 40px 52px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  align-items: start;
+  font-family: var(--font-main);
+}
+
+/* ── 왼쪽 문구 ── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+  padding-left: 20px;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: var(--color-search-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  background: rgba(106, 138, 100, 0.12);
+  border: 1px solid rgba(106, 138, 100, 0.22);
+  padding: 5px 12px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.hero-title {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--color-search-dark);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  word-break: keep-all;
+  margin: 0;
+}
+
+.hero-divider {
+  width: 32px;
+  height: 2px;
+  background: var(--color-search-pat);
+  border-radius: 2px;
+}
+
+.hero-sub {
+  font-size: 14.5px;
+  color: #5A6E57;
+  line-height: 1.75;
+  word-break: keep-all;
+  margin: 0;
+}

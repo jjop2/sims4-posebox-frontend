@@ -1,0 +1,75 @@
+:root {
+  /* ===========================
+     primary — 로즈 (사이트 전반)
+     =========================== */
+  --color-primary:        #B97A84;
+  --color-primary-hover:  #A56771;
+  --color-primary-light:  #F6ECED;
+  --color-primary-mid:    #E2BEC3;
+
+  /* ===========================
+     search — 그린 (히어로/검색 전용)
+     =========================== */
+  --color-search-bg:      #E8EDE6;
+  --color-search-main:    #4A7A44;
+  --color-search-hover:   #3A6A34;
+  --color-search-light:   #EAF2E8;
+  --color-search-row:     #F0F5EE;   /* 필터 행 호버 */
+  --color-search-dark:    #2D3E2B;
+  --color-search-muted:   #6A8A64;
+  --color-search-pat:     #C5D4C1;   /* 배경 패턴/구분선 */
+
+  /* ===========================
+     neutral
+     =========================== */
+  --color-background:     #FCFCFB;
+  --color-surface:        #FFFFFF;
+  --color-surface-alt:    #FAF8F7;
+
+  /* ===========================
+     text
+     =========================== */
+  --color-text:           #1A1A1A;
+  --color-text-mid:       #5A5A5A;
+  --color-text-light:     #9E9E9E;
+
+  /* ===========================
+     border
+     =========================== */
+  --color-border:         #E8E2DF;
+  --color-border-light:   #F0ECEB;
+
+  /* ===========================
+     font
+     =========================== */
+  --font-main:   "Pretendard Variable", Pretendard, "Noto Sans KR", sans-serif;
+  --font-logo:   "Outfit", sans-serif;
+  --font-serif:  "DM Serif Display", serif;
+
+  /* ===========================
+     radius
+     =========================== */
+  --radius-xs:  6px;
+  --radius-sm:  10px;
+  --radius-md:  16px;
+  --radius-lg:  18px;
+  --radius-xl:  24px;
+
+  /* ===========================
+     shadow
+     =========================== */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, .05);
+  --shadow-md:   0 8px 24px rgba(0, 0, 0, .08);
+  --shadow-lg:   0 18px 48px rgba(0, 0, 0, .12);
+  --shadow-hero: 0 6px 32px rgba(45, 62, 43, .10);
+
+   /* ===========================
+     auth
+     =========================== */
+   --gradient-auth: linear-gradient(
+      160deg,
+      var(--color-primary-light) 0%,
+      var(--color-surface) 55%
+   );
+
+}
