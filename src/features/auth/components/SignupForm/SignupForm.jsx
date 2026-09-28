@@ -6,6 +6,7 @@ import './SignupForm.css'
 import { ICONS } from '@/constants/icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import requestHandler from '@/utils/requestHandler'
+import { API_PATH } from '@/constants/apiPath'
 
 // Props
 // - onSuccess   : () => void — 회원가입 성공 시 호출
@@ -58,7 +59,7 @@ function SignupForm({ onSuccess, onGoogle, onGoLogin, isModal = false }) {
 
     requestHandler({
       method: 'post',
-      url: '/user/signup',
+      url: `${API_PATH.USER.SIGNUP}`,
       payload: { email: normalizedEmail, password },
       setLoading,
       onSuccess: () => {

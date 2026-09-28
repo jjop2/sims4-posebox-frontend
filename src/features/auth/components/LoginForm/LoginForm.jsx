@@ -2,14 +2,17 @@ import { useState } from 'react'
 import './LoginForm.css'
 import { EMAIL_REGEX } from '@/constants/regex'
 import requestHandler from '@/utils/requestHandler'
+import { useAuth } from '@/contexts/AuthContext'
+import { API_PATH } from '@/constants/apiPath'
 
 // Props
-// - onSubmit        : ({ email, password }) => void
 // - onGoogle        : () => void
 // - onGoSignup      : () => void
 // - onForgotPassword: () => void
 // - isModal         : boolean — 모달 안에서 쓸 때 true (배경/헤더 제거)
-function LoginForm({ onSubmit, onGoogle, onGoSignup, onForgotPassword, isModal = false }) {
+function LoginForm({ onGoogle, onGoSignup, onForgotPassword, isModal = false }) {
+  const {login} = useAuth()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({})
@@ -44,12 +47,11 @@ function LoginForm({ onSubmit, onGoogle, onGoSignup, onForgotPassword, isModal =
 
     requestHandler({
       method: 'post',
-      url: '/user/login',
+      url: `${API_PATH.AUTH.LOGIN}`,
       payload: {email:normalizedEmail, password},
       setLoading,
       onSuccess: (data) => {
-        // TODO: access_token context 저장
-        console.log(data)
+        login(data.accessToken, data.user)
       },
       onError: (msg) => {
         setServerError(msg)

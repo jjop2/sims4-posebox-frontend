@@ -15,7 +15,6 @@ function AuthModal() {
     authModalMode,
     closeAuthModal,
     switchAuthMode,
-    login,
   } = useAuth()
 
   // 비밀번호 재설정 메일을 받을 이메일 저장
@@ -43,12 +42,6 @@ function AuthModal() {
   }, [isAuthModalOpen])
 
   if (!isAuthModalOpen) return null
-
-  // === handlers ===
-  const handleLoginSubmit = ({ email, password }) => {
-    // 임시 목업 — API 연동 후 제거
-    // login({ sub: email, role: 'USER', accountType: 'LOCAL' })
-  }
 
   const handleGoogle = () => {
     // TODO: window.location.href = '/oauth2/authorization/google'

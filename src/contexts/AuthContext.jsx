@@ -1,6 +1,8 @@
 // 현재 접속한 유저 정보 + 인증 모달 context
 
-import { createContext, useContext, useState, useCallback } from 'react'
+import { logoutRequest, refreshAccessToken } from '@/features/auth/utils/authApi'
+import { registerAuthHandlers } from '@/utils/axiosInstance'
+import { createContext, useContext, useState, useCallback, useEffect } from 'react'
 
 // === context ===
 export const AuthContext = createContext(null)
@@ -9,19 +11,28 @@ export const AuthContext = createContext(null)
 function AuthProvider({ children }) {
   // === states ===
   const [user, setUser] = useState(null)
+  const [accessToken, setAccessToken] = useState(null)
 
   // 'login' | 'signup' | 'success' | 'forgotPassword' | 'forgotPasswordSent'
   const [authModalMode, setAuthModalMode] = useState('login')
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
   // === auth handlers ===
-  const login = (userData) => {
-    setUser(userData)
+  const login = (accessToken, user) => {
+    setAccessToken(accessToken)
+    setUser(user)
     setIsAuthModalOpen(false)
   }
 
-  const logout = () => {
-    setUser(null)
+  const logout = async () => {
+    try {
+      await logoutRequest()
+    } catch (err) {
+      console.error('Logout request failed:', err)
+    } finally {
+      setAccessToken(null)
+      setUser(null)
+    }
   }
 
   // === modal handlers ===
@@ -38,12 +49,39 @@ function AuthProvider({ children }) {
     setAuthModalMode(mode)
   }, [])
 
+  // === register access token ===
+  useEffect(() => {
+    registerAuthHandlers(
+      () => accessToken,
+      (token) => setAccessToken(token),
+      () => {
+        setAccessToken(null)
+        setUser(null)
+      }
+    )
+  }, [accessToken])
+
+  // === refresh access token ===
+  // 마운트 시 자동으로 refresh 요청하여 로그인 유지
+  useEffect(() => {
+    const restoreSession = async () => {
+      try {
+        const newAccessToken = await refreshAccessToken()
+        setAccessToken(newAccessToken)
+      } catch (refreshError) {
+        // refresh 실패 = 로그인 이력 없음 또는 refresh token 만료 -> 비로그인 상태 유지
+      }
+    }
+
+    restoreSession()
+  }, [])
+
   return (
     <AuthContext.Provider value={{
       user,
       login,
       logout,
-      isLoggedIn: !!user,
+      isLoggedIn: !!accessToken,
       isAuthModalOpen,
       authModalMode,
       openAuthModal,
