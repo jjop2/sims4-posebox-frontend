@@ -8,16 +8,17 @@ import { useAuth } from '@/contexts/AuthContext'
 import { NAV_MENU } from '@/constants/navigation'
 
 // === 역할별 헬퍼 함수 ===
-function getDisplayName(user) {
+// 트리거는 역할 상관없이 동일한 아이콘만 표시하고,
+// 닉네임 등 식별 정보는 드롭다운 패널 안에서만 보여준다.
+function getIdentityName(user) {
   if (user?.role === 'CREATOR') return user.nickname
-  if (user?.role === 'ADMIN')   return '관리자'
-  return user?.loginId
+  return null  // USER/ADMIN은 별도 표시 이름 없음 → 역할 뱃지로 대체
 }
 
-function getInitial(user) {
-  if (user?.role === 'CREATOR') return user.nickname?.[0] ?? '제'
-  if (user?.role === 'ADMIN')   return '관'
-  return null  // USER는 이니셜 없음 → 아이콘으로 표시
+function getRoleLabel(role) {
+  if (role === 'CREATOR') return '포즈 제작자'
+  if (role === 'ADMIN')   return '관리자'
+  return '일반 회원'
 }
 
 function getDropdownItems(role, logout) {
@@ -94,27 +95,26 @@ function Header() {
             <button
               className="avatar-btn"
               onClick={() => setDropdownOpen(o => !o)}
+              aria-haspopup="true"
+              aria-expanded={dropdownOpen}
+              aria-label="계정 메뉴"
             >
-              <span className={`avatar-circle ${user?.role?.toLowerCase()}`}>
-                {getInitial(user)
-                  ? getInitial(user)
-                  : <FontAwesomeIcon icon={ICONS.USER} />
-                }
+              <span className="avatar-circle">
+                <FontAwesomeIcon icon={ICONS.USER} />
               </span>
-              <span className="avatar-name">{getDisplayName(user)}</span>
               <span className="avatar-caret">▾</span>
             </button>
 
             {dropdownOpen && (
               <div className="avatar-dropdown">
-                {/* 역할 뱃지 + 아이디 */}
+                {/* 닉네임(CREATOR만) + 역할 뱃지 */}
                 <div className="dropdown-role">
+                  {getIdentityName(user) && (
+                    <span className="dropdown-name">{getIdentityName(user)}</span>
+                  )}
                   <span className={`role-badge ${user?.role?.toLowerCase()}`}>
-                    {user?.role === 'USER'    && '일반 회원'}
-                    {user?.role === 'CREATOR' && '포즈 제작자'}
-                    {user?.role === 'ADMIN'   && '관리자'}
+                    {getRoleLabel(user?.role)}
                   </span>
-                  <span className="dropdown-id">{user?.loginId}</span>
                 </div>
                 <div className="dropdown-divider" />
 

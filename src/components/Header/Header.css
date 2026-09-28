@@ -92,10 +92,10 @@
 .avatar-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: transparent;
   border: 1.5px solid var(--color-border);
-  padding: 5px 12px 5px 5px;
+  padding: 5px 10px 5px 5px;
   border-radius: 24px;
   cursor: pointer;
   font-family: inherit;
@@ -104,6 +104,7 @@
 
 .avatar-btn:hover { border-color: var(--color-primary-mid); }
 
+/* 역할과 무관하게 항상 동일한 아이콘 — 트리거는 일관성 우선, 역할/닉네임은 패널 안에서 표시 */
 .avatar-circle {
   width: 28px;
   height: 28px;
@@ -112,14 +113,10 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  font-weight: 600;
+  background: var(--color-border-light);
+  color: var(--color-text-mid);
 }
 
-.avatar-circle.user    { background: var(--color-border); color: var(--color-text-mid); }
-.avatar-circle.creator { background: var(--color-primary-mid); color: #8E5A63; }
-.avatar-circle.admin   { background: #D4E8D4; color: #3A6B3A; }
-
-.avatar-name  { font-size: 13px; color: var(--color-text); font-weight: 500; }
 .avatar-caret { font-size: 10px; color: var(--color-text-light); }
 
 .avatar-dropdown {
@@ -137,9 +134,16 @@
 
 .dropdown-role {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 16px 12px;
+}
+
+.dropdown-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
 }
 
 .role-badge {
@@ -152,8 +156,6 @@
 .role-badge.user    { background: var(--color-border-light); color: var(--color-text-mid); }
 .role-badge.creator { background: var(--color-primary-light); color: var(--color-primary); }
 .role-badge.admin   { background: #EDF5ED; color: #3A6B3A; }
-
-.dropdown-id { font-size: 11.5px; color: var(--color-text-light); }
 
 .dropdown-divider {
   height: 1px;
