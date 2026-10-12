@@ -55,7 +55,16 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    /* refresh 요청 조건
+        - 에러 코드가 401
+        - 인증이 필요한 요청(requiresAuth=true)
+        - 이전에 refresh 요청 시도를 하지 않음(_retry=false)
+     */
+    if (
+      error.response?.status === 401 &&
+      originalRequest.requiresAuth &&
+      !originalRequest._retry
+    ) {
       originalRequest._retry = true
 
       try {
