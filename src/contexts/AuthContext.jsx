@@ -18,9 +18,9 @@ function AuthProvider({ children }) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
   // === auth handlers ===
-  const login = (accessToken, user) => {
+  const login = (accessToken, loggedInUser) => {
     setAccessToken(accessToken)
-    setUser(user)
+    setUser(loggedInUser)
     setIsAuthModalOpen(false)
   }
 
@@ -66,8 +66,14 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const restoreSession = async () => {
       try {
-        const newAccessToken = await refreshAccessToken()
+        // refresh 응답 데이터
+        const refreshData = await refreshAccessToken()
+        
+        const newAccessToken = refreshData.accessToken
+        const restoredUser = refreshData.user
+
         setAccessToken(newAccessToken)
+        setUser(restoredUser)
       } catch (refreshError) {
         // refresh 실패 = 로그인 이력 없음 또는 refresh token 만료 -> 비로그인 상태 유지
       }

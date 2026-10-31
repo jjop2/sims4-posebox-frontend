@@ -78,7 +78,7 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true
 
       try {
-        const newAccessToken = await refreshAccessToken()
+        const { accessToken: newAccessToken } = await refreshAccessToken()
         setAccessTokenExternally(newAccessToken)
 
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`

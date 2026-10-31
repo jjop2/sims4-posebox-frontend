@@ -4,9 +4,9 @@ import axios from "axios"
 /**
  * refreshAccessToken
  *
- * refresh token(httpOnly 쿠키)을 이용해 새로운 access token을 발급받음.
+ * refresh token(httpOnly 쿠키)을 이용해 user 정보 및 새로운 access token를 발급받음.
  * 
- * @returns {Promise<string>} 새로 발급된 access token
+ * @returns {Promise<{accessToken: string, user: object}>}
  */
 export const refreshAccessToken = async () => {
   const res = await axios.post(
@@ -14,7 +14,7 @@ export const refreshAccessToken = async () => {
     {},
     { withCredentials: true }
   )
-  return res.data.accessToken
+  return res.data
 }
 
 /**
