@@ -49,7 +49,7 @@ function AuthModal() {
 
   const handleForgotPasswordSubmit = (email) => {
     // TODO: POST /api/auth/forgot-password 연동
-    console.log('forgot password:', { email })
+    // console.log('forgot password:', { email })
     setResetEmail(email)
     switchAuthMode('forgotPasswordSent')
   }

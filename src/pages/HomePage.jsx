@@ -6,7 +6,7 @@ import RecentPoses  from '@/features/poseSearch/components/RecentPoses'
 function HomePage() {
   const handleSearch = (filters) => {
     // TODO: 검색 결과 페이지로 이동 (react-router navigate 등)
-    console.log('search filters:', filters)
+    // console.log('search filters:', filters)
   }
 
   return (
