@@ -40,7 +40,16 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use((config) => {
-  if (!config.headers.Authorization) {
+  /**
+   * request 인터셉터가 토큰을 붙이는 조건
+   * - 인증이 필요한 요청(requiresAuth=true)
+   * - 헤더에 토큰이 없음
+   */
+  if (
+    config.requiresAuth &&
+    !config.headers.Authorization
+  ) {
+    // 토큰은 AuthProvider가 registerAuthHandlers로 등록한 getter로 꺼냄
     const token = getAccessToken()
   
     if (token) {
@@ -55,10 +64,11 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config
 
-    /* refresh 요청 조건
-        - 에러 코드가 401
-        - 인증이 필요한 요청(requiresAuth=true)
-        - 이전에 refresh 요청 시도를 하지 않음(_retry=false)
+    /**
+     * refresh 요청 조건
+     * - 에러 코드가 401
+     * - 인증이 필요한 요청(requiresAuth=true)
+     * - 이전에 refresh 요청 시도를 하지 않음(_retry=false)
      */
     if (
       error.response?.status === 401 &&
