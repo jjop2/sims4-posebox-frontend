@@ -42,7 +42,7 @@ function LoginForm({ onGoogle, onGoSignup, onForgotPassword, isModal = false }) 
     setErrors(newErrors)
     if (Object.keys(newErrors).length > 0) return
 
-    setErrors('')
+    setServerError('')
     const normalizedEmail = email.trim().toLowerCase()
 
     requestHandler({
