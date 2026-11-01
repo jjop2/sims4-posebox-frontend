@@ -56,7 +56,7 @@ function AuthModal() {
 
   const handleResend = () => {
     // TODO: POST /api/auth/forgot-password 재전송
-    console.log('resend forgot password mail:', { email: resetEmail })
+    // console.log('resend forgot password mail:', { email: resetEmail })
   }
 
   const isSuccess = authModalMode === 'success'
