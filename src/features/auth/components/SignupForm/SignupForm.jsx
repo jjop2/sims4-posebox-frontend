@@ -36,7 +36,7 @@ function SignupForm({ onSuccess, onGoogle, onGoLogin, isModal = false }) {
     if (!password)
       newErrors.password = '비밀번호를 입력해 주세요.'
     else if (password.length > 50)
-      newErrors.password = '비밀번호는 50자 미만이어야 합니다.'
+      newErrors.password = '비밀번호는 50자 이하여야 합니다.'
     else if (!PASSWORD_REGEX.test(password))
       newErrors.password = '비밀번호는 영문, 숫자, 특수문자를 모두 포함하여 8자 이상 작성해야 합니다.'
 
