@@ -1,4 +1,5 @@
 import { API_PATH } from "@/constants/apiPath"
+import { REFRESH_REQUEST_TIMEOUT_MS, REQUEST_TIMEOUT_MS } from "@/constants/time"
 import axios from "axios"
 
 /**
@@ -12,7 +13,7 @@ export const refreshAccessToken = async () => {
   const res = await axios.post(
     `${import.meta.env.VITE_SERVER_URL}${API_PATH.AUTH.REFRESH}`,
     {},
-    { withCredentials: true }
+    { withCredentials: true, timeout: REFRESH_REQUEST_TIMEOUT_MS }
   )
   return res.data
 }
@@ -26,6 +27,6 @@ export const logoutRequest = async () => {
   await axios.post(
     `${import.meta.env.VITE_SERVER_URL}${API_PATH.AUTH.LOGOUT}`,
     {},
-    { withCredentials: true }
+    { withCredentials: true, timeout: REQUEST_TIMEOUT_MS }
   )
 }

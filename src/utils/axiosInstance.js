@@ -1,3 +1,4 @@
+import { REQUEST_TIMEOUT_MS } from "@/constants/time";
 import { refreshAccessToken } from "@/features/auth/utils/authApi";
 import axios from "axios";
 
@@ -36,7 +37,8 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json; charset=utf-8'
   },
-  withCredentials: true
+  withCredentials: true,
+  timeout: REQUEST_TIMEOUT_MS
 })
 
 axiosInstance.interceptors.request.use((config) => {
@@ -85,7 +87,13 @@ axiosInstance.interceptors.response.use(
         return axiosInstance(originalRequest)
         
       } catch (refreshError) {
-        onAuthExpired()
+        const status = refreshError.response?.status
+
+        // 401인 경우 세션 만료 -> 로그아웃 처리
+        if (status === 401) {
+          onAuthExpired()
+        }
+
         return Promise.reject(refreshError)
       }
     }
